@@ -1,0 +1,334 @@
+
+:root {
+	--primary: #ea40a4;
+	--business: #3a82ee;
+	--personal: var(--primary);
+	--light: #eee;
+	--grey: #888;
+	--dark: #313154;
+	--danger: #ff5b57;
+
+	--shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+	--selected-bg: black;
+	
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Montserrat", sans-serif;
+}
+
+input:not([type="radio"]):not([type="checkbox"]),
+button {
+	appearance: none;
+	border: none;
+	outline: none;
+	background: none;
+	cursor: initial;
+}
+
+body {
+	background: var(--light);
+	color: var(--dark);
+}
+
+section {
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+	padding-left: 1.5rem;
+	padding-right: 1.5em;
+}
+
+h3 {
+	color: var(--dark);
+	font-size: 1rem;
+	font-weight: 400;
+	margin-bottom: 0.5rem;
+}
+
+h4 {
+	color: var(--grey);
+	font-size: 0.875rem;
+	font-weight: 700;
+	margin-bottom: 0.5rem;
+}
+
+.greeting .title {
+	display: flex;
+}
+
+.greeting .title input {
+	margin-left: 0.5rem;
+	flex: 1 1 0%;
+	min-width: 0;
+}
+
+.greeting .title,
+.greeting .title input {
+	color: var(--dark);
+	font-size: 1.5rem;
+	font-weight: 700;
+}
+
+.create-todo input[type="text"] {
+	display: block;
+	width: 100%;
+	font-size: 1.125rem;
+	padding: 1rem 1.5rem;
+	color: var(--dark);
+	background-color: #fff;
+	border-radius: 0.5rem;
+	box-shadow: var(--shadow);
+	margin-bottom: 1.5rem;
+}
+
+.create-todo .options {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-gap: 1rem;
+	margin-bottom: 1.5rem;
+}
+
+/* Default styles for labels */
+.create-todo .options label {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 1.5rem;
+	background-color: #fff; /* Default background color */
+	border-radius: 0.5rem;
+	box-shadow: var(--shadow);
+	cursor: pointer;
+	transition: background-color 0.2s ease;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+	display: none;
+}
+
+.create-todo .options label div {
+	color: var(--dark);
+	font-size: 1.125rem;
+	margin-top: 1rem;
+}
+
+.create-todo input[type="submit"] {
+	display: block;
+	width: 100%;
+	font-size: 1.125rem;
+	padding: 1rem 1.5rem;
+	color: #fff;
+	background-color: greenyellow;
+	color: #000;
+	border-radius: 0.5rem;
+	box-shadow: var(--personal-glow);
+	cursor: pointer;
+	transition: 0.2s ease-in-out;
+}
+
+.create-todo input[type="submit"]:hover {
+	opacity: 0.75;
+}
+
+.todo-list .list {
+	margin: 1rem 0;
+}
+
+.todo-list .todo-item {
+	display: flex;
+	align-items: center;
+	background-color: #fff;
+	padding: 1rem;
+	border-radius: 0.5rem;
+	box-shadow: var(--shadow);
+	margin-bottom: 1rem;
+}
+
+.todo-item label {
+	display: block;
+	margin-right: 1rem;
+	cursor: pointer;
+}
+
+.todo-item .todo-content {
+	flex: 1 1 0%;
+}
+
+.todo-item .todo-content input {
+	color: var(--dark);
+	font-size: 1.125rem;
+}
+
+.todo-item .actions {
+	display: flex;
+	align-items: center;
+}
+
+.todo-item .actions button {
+	display: block;
+	padding: 0.5rem;
+	border-radius: 0.25rem;
+	color: #fff;
+	cursor: pointer;
+	transition: 0.2s ease-in-out;
+}
+
+.todo-item .actions button:hover {
+	opacity: 0.75;
+}
+
+.todo-item .actions .edit {
+	margin-left: 0.5rem;
+	background-color: green;
+}
+
+.todo-item .actions .delete {
+	background-color: red;
+	margin-right: 0.5rem;
+
+}
+
+.todo-item.done .todo-content input {
+	text-decoration: line-through;
+	color: var(--grey);
+}
+
+/* Updated bubble styles */
+.bubble {
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	margin-right: 8px;
+	background-color: #ffffff;
+	/* Default color for unselected */
+	border: 2px solid var(--dark);
+	transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Category-specific bubble colors */
+.bubble.business {
+	background-color: #03e2ff;
+}
+
+.bubble.personal {
+	background-color: #ff00d0;
+}
+
+.bubble.school {
+	background-color: #ff1100;
+}
+
+.bubble.work {
+	background-color: #bf0600;
+}
+
+.bubble.money {
+	background-color: #106e13;
+}
+
+.bubble.store {
+	background-color: #008cff;
+}
+
+/* Bubble color change on selection */
+input[type="radio"]:checked+label .bubble.business {
+	background-color: var(--selected-bg);
+}
+
+input[type="radio"]:checked+label .bubble.personal {
+	background-color: var(--selected-bg);
+}
+
+input[type="radio"]:checked+label .bubble.school {
+	background-color: var(--selected-bg);
+}
+
+input[type="radio"]:checked+label .bubble.work {
+	background-color: var(--selected-bg);
+}
+
+input[type="radio"]:checked+label .bubble.money {
+	background-color: var(--selected-bg);
+}
+
+input[type="radio"]:checked+label .bubble.store {
+	background-color: var(--selected-bg);
+}
+
+.todo-content input {
+	color: var(--dark);
+	font-size: 1.125rem;
+	border: 1px solid var(--grey);
+	padding: 0.5rem;
+	border-radius: 0.25rem;
+	box-shadow: var(--shadow);
+}
+
+.todo-content input:disabled {
+	background-color: var(--light);
+	cursor: not-allowed;
+}
+
+.todo-content span {
+	font-size: 1.125rem;
+}
+
+/* Hide the radio buttons */
+input[type="radio"] {
+	display: none;
+}
+/* Change the background color of the label when its associated radio button is checked */
+input[type="radio"]#category1:checked+label {
+	background-color: #e0e0e0;
+}
+
+input[type="radio"]#category2:checked+label {
+	background-color: #e0e0e0;
+}
+
+input[type="radio"]#category3:checked+label {
+	background-color: #e0e0e0;
+}
+
+input[type="radio"]#category4:checked+label {
+	background-color: #e0e0e0;
+}
+
+input[type="radio"]#category5:checked+label {
+	background-color: #e0e0e0;
+}
+
+input[type="radio"]#category6:checked+label {
+	background-color: #e0e0e0;
+}
+
+/* Bubble color change on selection */
+input[type="radio"]#category1:checked+label .bubble {
+	background-color: #03e2ff;
+}
+
+input[type="radio"]#category2:checked+label .bubble {
+	background-color: #ff00d0;
+}
+
+input[type="radio"]#category3:checked+label .bubble {
+	background-color: #ff1100;
+}
+
+input[type="radio"]#category4:checked+label .bubble {
+	background-color:#bf0600;
+}
+
+input[type="radio"]#category5:checked+label .bubble {
+	background-color: #106e13;
+}
+
+input[type="radio"]#category6:checked+label .bubble {
+	background-color:#008cff;
+}
