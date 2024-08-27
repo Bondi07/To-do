@@ -1,11 +1,16 @@
 <script setup>
 import { ref, onMounted, computed, watch } from 'vue'
 
+// Definim variabilele reactive
+const input_content = ref('')
+const input_category = ref(null)
+
 const todos = ref([])
 const name = ref('')
 
-const input_content = ref('')
-const input_category = ref(null)
+const textColor = ref('#000000')
+const textFont = ref('Arial')
+const textSize = ref('16px')
 
 // Compute todos sorted by creation time
 const todos_asc = computed(() => {
@@ -51,32 +56,35 @@ const editTodo = (todo) => {
     todo.editable = !todo.editable
 }
 
-
 // Initialize data from localStorage
 onMounted(() => {
+    // Citește valorile din localStorage
     name.value = localStorage.getItem('name') || ''
     todos.value = JSON.parse(localStorage.getItem('todos')) || []
+    textColor.value = localStorage.getItem('textColor') || '#000000'
+    textFont.value = localStorage.getItem('textFont') || 'Arial'
+    textSize.value = localStorage.getItem('textSize') || '16px'
 })
+
 </script>
 
 <template>
     <main class="app">
-        <section class="greeting">
+        <!-- Aplică stilurile din localStorage pe secțiunea de salut -->
+        <section class="greeting" :style="{ color: textColor, fontFamily: textFont, fontSize: textSize }">
             <h5 class="input-instruction">Aici poți schimba numele</h5>
             <h2 class="title">
-                Salut! <input type="text" id="name" placeholder="Name here" v-model="name">
+                Salut! <input type="text" id="name" placeholder="Name here" v-model="name"
+                    :style="{ color: textColor }">
             </h2>
-            
-                <!-- Butonul de setări -->
+            <!-- Butonul de setări -->
             <button @click="$router.push('/settings')" class="settings-button">
                 Setari
             </button>
         </section>
 
-
-
-
-        <section class="create-todo">
+        <!-- Form pentru creare todo -->
+        <section class="create-todo" :style="{ color: textColor, fontFamily: textFont, fontSize: textSize }">
             <h3>CREATI TODO</h3>
 
             <form id="new-todo-form" @submit.prevent="addTodo">
@@ -127,7 +135,8 @@ onMounted(() => {
             </form>
         </section>
 
-        <section class="todo-list">
+        <!-- TODO LIST -->
+        <section class="todo-list" :style="{ color: textColor, fontFamily: textFont, fontSize: textSize }">
             <h3>TODO LIST</h3>
             <div class="list" id="todo-list">
                 <div v-for="todo in todos_asc" :key="todo.createdAt" :class="`todo-item ${todo.done ? 'done' : ''}`">

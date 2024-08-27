@@ -14,3 +14,15 @@
 .home-button:hover {
 	background-color: var(--dark);
 }
+.settings-controls {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	margin-top: 20px;
+	width: 250px;
+}
+#fontSize{
+	border: 2px solid black;
+	padding: 10px;
+	
+}
