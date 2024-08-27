@@ -117,24 +117,6 @@ input[type="checkbox"] {
 	margin-top: 1rem;
 }
 
-.create-todo input[type="submit"] {
-	display: block;
-	width: 100%;
-	font-size: 1.125rem;
-	padding: 1rem 1.5rem;
-	color: #fff;
-	background-color: greenyellow;
-	color: #000;
-	border-radius: 0.5rem;
-	box-shadow: var(--personal-glow);
-	cursor: pointer;
-	transition: 0.2s ease-in-out;
-}
-
-.create-todo input[type="submit"]:hover {
-	opacity: 0.75;
-}
-
 .todo-list .list {
 	margin: 1rem 0;
 }
@@ -366,3 +348,31 @@ input[type="radio"]#category6:checked+label .bubble {
 	margin-left: 50px;
 	padding-bottom: 10px;
 }
+/* Stiluri pentru butonul normal */
+#add {
+	display: block;
+	width: 80%;
+	font-size: 1.125rem;
+	padding: 1rem 1.5rem;
+	background-color: greenyellow;
+	color: #000;
+	border-radius: 0.5rem;
+	box-shadow: var(--personal-glow);
+	cursor: pointer;
+	transition: 0.2s ease-in-out;
+	padding-left: 20px;
+	padding-right: 20px;
+	justify-content: center;
+	align-items: center;
+	margin: 0 auto;
+		
+}
+#add:hover {
+	opacity: 0.75;
+}
+/* Stiluri pentru starea "adding" a butonului */
+#add.adding {
+	background-color: #28a745;
+	transform: scale(1.1);
+}
+

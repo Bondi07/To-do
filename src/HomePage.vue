@@ -12,6 +12,11 @@ const textColor = ref('#000000')
 const textFont = ref('Arial')
 const textSize = ref('16px')
 
+// Starea butonului
+const isAdding = ref(false)
+const buttonText = ref('Add todo')
+
+
 // Compute todos sorted by creation time
 const todos_asc = computed(() => {
     return [...todos.value].sort((a, b) => a.createdAt - b.createdAt)
@@ -42,8 +47,19 @@ const addTodo = () => {
         createdAt: new Date().getTime()
     })
 
+    // Resetează câmpurile de input
     input_content.value = ''
     input_category.value = null
+
+    // Schimbă starea butonului în "Done!" și adaugă o iconiță
+    isAdding.value = true
+    buttonText.value = 'Done! ✅'
+
+    // Revine la starea inițială după 1.5 secunde
+    setTimeout(() => {
+        isAdding.value = false
+        buttonText.value = 'Add todo'
+    }, 1500)
 }
 
 // Function to remove a todo
@@ -131,7 +147,7 @@ onMounted(() => {
                     </label>
                 </div>
 
-                <input type="submit" value="Add todo" />
+                <button id="add" type="submit" :class="{ 'adding': isAdding }">{{ buttonText }}</button>
             </form>
         </section>
 
